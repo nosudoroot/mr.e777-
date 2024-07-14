@@ -1,0 +1,122 @@
+/ Arch Linux Full install KDE
+// Author: Mr.E
+
+1.      cfdisk /dev/sda
+
+
+2.      512M EFI
+        4G Linux Swap
+        400G Linux FileSystem
+
+3.      fdisk -l
+
+
+4.      mkfs.fat -F32 /dev/sda1
+
+
+5.      mkswap /dev/sda2
+        swapon /dev/sda2
+
+6.      mkfs.ext4 /dev/sda3
+
+
+7.      pacman -Syy
+
+
+8.      mount /dev/sda3 /mnt
+
+
+9.      pacstrap -K /mnt base linux linux-firmware sudo nano
+
+
+10.     genfstab -U /mnt >> /mnt/etc/fstab
+
+
+11.     arch-chroot /mnt
+
+
+12.     ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
+
+
+13.     nano /etc/locale.gen    
+
+
+14.     “en_US.UTF-8 UTF-8” and “en_US ISO-8859-1"
+
+
+15.     locale-gen
+
+
+16.     hwclock --systohc
+
+
+17.     echo LANG=en_US.UTF-8 > /etc/locale.conf
+        export LANG=en_US.UTF-8
+
+18.     echo arch-pc > /etc/hostname
+
+
+19.     nano /etc/hosts
+
+
+20.     127.0.0.1      localhost
+        ::1            localhost
+        127.0.1.1      arch-pc  
+
+21.     passwd
+
+
+22.     pacman -S grub efibootmgr os-prober mtools
+
+
+23.     mkdir /boot/efi
+        mount /dev/sda1 /boot/efi
+
+24.     grub-install --target=x86_64-efi --bootloader-id=grub_uefi
+
+
+25.     grub-mkconfig -o /boot/grub/grub.cfg
+
+
+26.     pacman -S xorg-server xorg-apps
+
+
+27.     pacman -S nvidia nvidia-utils
+
+
+28.     pacman -S xf86-video-intel
+
+
+29.     pacman -S xfce4 xfce4-goodies networkmanager network-manager-applet
+
+        sudo pacman -S lxqt lxqt-qtplugin lxqt-themes networkmanager network-manager-applet
+
+30.     pacman -S lightdm lightdm-gtk-greeter
+
+        sudo pacman -S lightdm lightdm-gtk-greeter
+
+31.     systemctl enable lightdm
+        systemctl enable NetworkManager
+
+32.     useradd -m -G wheel linuxiac
+
+
+33.     passwd linuxiac
+
+
+34.     EDITOR=nano visudo
+
+
+35.     # %wheel ALL=(ALL) ALL
+
+
+36.     exit
+
+
+37.     umount -R /mnt
+
+
+38.     reboot
+
+
+
