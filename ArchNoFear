@@ -1,6 +1,6 @@
 / Arch Linux Full install KDE
 // Author: Mr.E
-
+// MAY HAVE TO SWITCH UEFI ENABLE IN BIOS & IF ISSUES HAPPEN DURING RESTART OR START THEN SWITCH BACK OF...SO ON OR OFF 
 1.      cfdisk /dev/sda
 
 
