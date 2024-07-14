@@ -1,6 +1,8 @@
-/ Arch Linux Full install KDE
+// Arch Linux Full install KDE 
 // Author: Mr.E
-// MAY HAVE TO SWITCH UEFI ENABLE IN BIOS & IF ISSUES HAPPEN DURING RESTART OR START THEN SWITCH BACK OF...SO ON OR OFF 
+
+// SWITCH ON UEFI IN BIOS IF NO START UP OR ISSUES TEHN TURN IT OFF..SIMPLE
+
 1.      cfdisk /dev/sda
 
 
@@ -87,16 +89,15 @@
 28.     pacman -S xf86-video-intel
 
 
-29.     pacman -S xfce4 xfce4-goodies networkmanager network-manager-applet
+29.     sudo pacman -S plasma kde-applications
 
-        sudo pacman -S lxqt lxqt-qtplugin lxqt-themes networkmanager network-manager-applet
 
-30.     pacman -S lightdm lightdm-gtk-greeter
+30.     sudo pacman -S sddm
+        sudo systemctl enable sddm
 
-        sudo pacman -S lightdm lightdm-gtk-greeter
 
-31.     systemctl enable lightdm
-        systemctl enable NetworkManager
+31.     sudo systemctl enable NetworkManager
+
 
 32.     useradd -m -G wheel linuxiac
 
@@ -107,7 +108,7 @@
 34.     EDITOR=nano visudo
 
 
-35.     # %wheel ALL=(ALL) ALL
+35.     %wheel ALL=(ALL) ALL
 
 
 36.     exit
@@ -117,6 +118,5 @@
 
 
 38.     reboot
-
 
 
