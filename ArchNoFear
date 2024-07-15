@@ -1,12 +1,13 @@
 // Arch Linux Full install KDE 
 // Author: Mr.E
-
 // SWITCH ON UEFI IN BIOS IF NO START UP OR ISSUES TEHN TURN IT OFF..SIMPLE
-0.  iwctl 
 
-		station wlan0 get-networks
 
-		station wlan0 connect <networkname>
+0.      iwctl 
+
+				station wlan0 get-networks
+
+				station wlan0 connect <networkname>
 
 1.      cfdisk /dev/sda
 
